@@ -54,6 +54,10 @@ public class CurseUpload extends DefaultTask {
         artifact = new File(f);
     }
 
+    public void artifact(File f) {
+        artifact = f;
+    }
+
     public void api_key(String s) {
         api_key = s;
     }
