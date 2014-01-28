@@ -27,12 +27,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VersionInformation {
+    @SuppressWarnings("unchecked")
     public static Map<Integer, LinkedTreeMap<String, String>> get() {
         Gson gson = new Gson();
         Map<Integer, LinkedTreeMap<String, String>> data = new HashMap<Integer, LinkedTreeMap<String, String>>();
 
         try {
-            //noinspection unchecked
             data = gson.fromJson(readUrl("http://minecraft.curseforge.com/game-versions.json"), data.getClass());
         } catch (Exception e) {
             e.printStackTrace();
