@@ -10,7 +10,7 @@ To use this plugin you will need to add to your ```buildscript { }``` block in y
 buildscript {
     repositories {
         maven {
-            name = 'Cazzar's Maven repo'
+            name = 'Cazzar\'s Maven repo'
             url = 'http://maven.cazzar.net/'
         }
     }
