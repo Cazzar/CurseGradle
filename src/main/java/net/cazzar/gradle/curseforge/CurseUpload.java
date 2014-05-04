@@ -117,6 +117,17 @@ public class CurseUpload extends DefaultTask {
             HttpResponse response = client.execute(post);
             HttpEntity ent = response.getEntity();
 
+            if (response.getStatusLine().getStatusCode() == 301) {
+                post = new HttpPost(response.getLastHeader("Location").getValue());
+                post.addHeader("X-API-Key", api_key);
+                post.setEntity(entity);
+
+                EntityUtils.consume(ent);
+
+                response = client.execute(post);
+                ent = response.getEntity();
+            }
+
             if (response.getStatusLine().getStatusCode() != 201) {
                 Gson gson = new Gson();
                 @SuppressWarnings("unchecked") Map<String, List<String>> data = gson.fromJson(EntityUtils.toString(ent), Map.class);
